@@ -28,7 +28,7 @@ mod swap {
         }
 
         #[ink(message, payable)]
-        pub fn buy(&self) {
+        pub fn buy(&mut self) {
             let caller = self.env().caller();
             let value = self.env().transferred_balance();
             assert!(value > 0, "msg.value cannot be zero");
