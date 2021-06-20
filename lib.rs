@@ -41,6 +41,7 @@ mod swap {
 
         }
 
+        #[ink(message)]
         pub fn sell(&mut self, amount: Balance) {
             let caller = self.env().caller();
             assert!(amount > 0, "Amount cannot be zero");
