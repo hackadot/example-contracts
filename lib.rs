@@ -34,7 +34,7 @@ mod swap {
             assert!(value > 0, "msg.value cannot be zero");
             let mut my_erc20: Erc20 = ink_env::call::FromAccountId::from_account_id(self.token_addr);
             let hackt_balance = my_erc20.balance_of(self.env().account_id());
-            let transaction_value = value * (*self.exchange_rate);
+            let transaction_value = value * (*self.exchange_rate as u128);
             assert!(hackt_balance >= transaction_value, "Insufficient balance on contract, transaction_value is {}, current balance is {}",
             transaction_value, hackt_balance);
             my_erc20.transfer(caller, transaction_value);
