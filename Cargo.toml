@@ -1,7 +1,7 @@
 [package]
 name = "swap"
 version = "0.1.0"
-authors = ["Varg Vikernes varg.vikernes@supercolony.net"]
+authors = ["Varg Vikernes varg.vikernes@supercolony.net", "Elena Derymova e.derymova@4irelabs.com"]
 edition = "2018"
 
 [profile.release]
