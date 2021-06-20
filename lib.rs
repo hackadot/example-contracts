@@ -41,6 +41,18 @@ mod swap {
 
         }
 
+        pub fn sell(&mut self, amount: Balance) {
+            let caller = self.env().caller();
+            assert!(amount > 0, "Amount cannot be zero");
+            let mut this_balance = self.env().balance();
+            let dot_amount = amount / (*self.exchange_rate as u128);
+            assert!(this_balance >= dot_amount);
+            let mut my_erc20: Erc20 = ink_env::call::FromAccountId::from_account_id(self.token_addr);
+            assert!(amount <= my_erc20.allowance(caller, self.env().account_id()));
+            my_erc20.transfer_from(caller, self.env().account_id(), amount);
+            self.env().transfer(caller, dot_amount);
+        }
+
         /// Simply returns the current value of our `bool`.
         #[ink(message)]
         pub fn exchange_rate(&self) -> u8 {
