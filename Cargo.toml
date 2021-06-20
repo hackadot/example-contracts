@@ -4,6 +4,9 @@ version = "0.1.0"
 authors = ["Varg Vikernes varg.vikernes@supercolony.net"]
 edition = "2018"
 
+[profile.release]
+overflow-checks = false
+
 [dependencies]
 ink_primitives = { git = "https://github.com/Supercolony-net/ink", branch = "3.0-rc4", default-features = false }
 ink_metadata = { git = "https://github.com/Supercolony-net/ink", branch = "3.0-rc4", default-features = false, features = ["derive"], optional = true }
